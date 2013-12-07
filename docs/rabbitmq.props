@@ -1,0 +1,11 @@
+host=yourhost.com
+port=yourport
+username=usersender
+password=superpass
+vhost=virtualHost
+queueName=obvious
+SSL=1
+clientKeyCert=/path/to/client/keycert.p12
+clientKeyPassphrase=passwordToKeycert.p12
+trustKeystore=/path/to/rabbitmqtruststore
+trustKeystorePassphrase=passwordToRabbitmqtruststore

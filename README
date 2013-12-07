@@ -1,1 +1,10 @@
-This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
+This is a transporter of email messages from rabbitmq queues to AWS SES.
+
+This should be easy to use.
+Just build a jar. Place it somewhere.
+Become familiar with files in directory "docs". Their content and parameter names should be obvious.
+Create your own files (based on those in directory "docs") with information relevant to you.
+If you do not use ssl for rabbitmq then you should set SSL=0, and parameters clientKeyCert, clientKeyPassphrase, trustKeystore, trustKeystorePassphrase will be ignored.
+
+Usage:
+java -cp "/path/to/lib/*" -Dlog4j.configurationFile=/path/to/log4j2.xml com.sentilabs.mail.RabbitmqToAwsSes ses=/path/to/awsses.props rmq=/path/to/rabbitmq.props
