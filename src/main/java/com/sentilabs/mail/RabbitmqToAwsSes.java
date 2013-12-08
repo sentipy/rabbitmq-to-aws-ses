@@ -21,7 +21,7 @@ public class RabbitmqToAwsSes {
         logger.error("Parameters not specified");
     }
 
-    public static void main(String[] args) throws CertificateException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, KeyManagementException, IOException {
+    public static void main(String[] args) {
         if (args.length < 2){
             printHelp();
             System.exit(0);

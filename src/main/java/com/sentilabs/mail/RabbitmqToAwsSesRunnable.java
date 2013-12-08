@@ -22,8 +22,10 @@ import javax.net.ssl.TrustManagerFactory;
 
 public class RabbitmqToAwsSesRunnable implements Runnable {
 
+    // variable whether connections to AWS SES and RabbitMQ have been successfully created
     private boolean inited = false;
 
+    // instance of AwsSesMailer which holds connection to AWS SES and is used to send message
     private AwsSesMailer awsSesMailer;
     private Channel rmqChannel;
     private Connection rmqConnection;
@@ -31,17 +33,25 @@ public class RabbitmqToAwsSesRunnable implements Runnable {
 
     private static Logger logger = LogManager.getLogger(RabbitmqToAwsSesRunnable.class.getName());
 
+    // print debug info to console and log file
     private static void logAndPrint(String str){
         System.out.println(str);
         logger.error(str);
     }
 
+    // print debug info with stack trace to console and log file
     private static void logAndPrint(String str, Exception e){
         System.out.println(str);
         logger.error(e.getMessage(), e);
         logger.error(str);
     }
 
+    /**
+     * 
+     * @param awsSesFileParamsPath path to file with information required to connect to AWS SES
+     * @param rabbitmqFileParams path to file with information required to connect to RabbitMQ
+     * @return true if all required connections have been established, false otherwise
+     */
     public boolean init(String awsSesFileParamsPath, String rabbitmqFileParams) {
 
         if (awsSesFileParamsPath == null){
@@ -54,8 +64,8 @@ public class RabbitmqToAwsSesRunnable implements Runnable {
             logger.error("File with parameters for rabbitMQ not specified");
             return false;
         }
-        FileInputStream fisSesParams;
-        FileInputStream fisRmqParams;
+        FileInputStream fisSesParams; // input streams with params for AWS SES
+        FileInputStream fisRmqParams; // input streams with params for RabbitMQ
         Properties rabbitmqProperties = new Properties();
 
         try {
