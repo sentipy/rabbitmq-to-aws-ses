@@ -6,5 +6,8 @@ Become familiar with files in directory "docs". Their content and parameter name
 Create your own files (based on those in directory "docs") with information relevant to you.
 If you do not use ssl for rabbitmq then you should set SSL=0, and parameters clientKeyCert, clientKeyPassphrase, trustKeystore, trustKeystorePassphrase will be ignored.
 
+N.B. This project depends on my two others projects: aws-ses-mailer and emailmsg.
+So be sure to clone them first and install them to maven repository
+
 Usage:
 java -cp "/path/to/lib/*" -Dlog4j.configurationFile=/path/to/log4j2.xml com.sentilabs.mail.RabbitmqToAwsSes ses=/path/to/awsses.props rmq=/path/to/rabbitmq.props
