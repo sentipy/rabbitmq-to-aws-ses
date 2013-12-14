@@ -289,7 +289,7 @@ public class RabbitmqToAwsSesRunnable implements Runnable {
                 logger.error("There was an error while trying to get next message");
                 return;
             } catch (ShutdownSignalException e){
-                continue;
+                break;
             }
             byte[] bytes = delivery.getBody();
             Emailmsg.EmailMsg msg;
